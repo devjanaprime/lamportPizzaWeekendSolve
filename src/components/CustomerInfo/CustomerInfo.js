@@ -26,6 +26,7 @@ class CustomerInfo extends Component{
     handleClick = () =>{
         console.log( 'in handleClick' );
         this.props.dispatch( { type: 'customer411', payload: this.state } );
+        this.props.history.push( '/checkout' );
     }
 
     render(){

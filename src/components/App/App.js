@@ -5,6 +5,7 @@ import Menu from '../Menu/Menu';
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import Checkout from '../Checkout/Checkout';
 import { connect } from 'react-redux';
+import { HashRouter, Route } from 'react-router-dom';
 
 class App extends Component {
   state={
@@ -37,9 +38,11 @@ class App extends Component {
         <br/>
         <img src="images/pizza_photo.png"/>
         <p>Pizza is great.</p>
-        <Menu menu={ this.state.menu } dispatch={ this.props.dispatch }/>
-        <CustomerInfo dispatch={ this.props.dispatch }/>
-        <Checkout />
+        <HashRouter>
+          <Route exact path='/'render={ (props)=><Menu {...props} menu={ this.state.menu } dispatch={ this.props.dispatch }/> }/>
+          <Route path='/customer' render={ (props)=><CustomerInfo {...props} dispatch={ this.props.dispatch } /> }/>
+          <Route path='/checkout' render={ (props)=><Checkout {...props} dispatch={ this.props.dispatch } /> } />
+        </HashRouter>
       </div>
     );
   }
