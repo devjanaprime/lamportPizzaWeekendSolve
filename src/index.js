@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import Axios from 'axios';
 
 const reducerInitialState = {
     customer: {
@@ -45,7 +46,23 @@ const pizzaReducer = ( state=reducerInitialState, action ) =>{
         }
     }
     else if( action.type === 'placeOrder' ){
-        console.log( 'placing order' );
+        console.log( 'placing order:', state );
+        // reformat state for the POST
+        const objectToPost ={
+            customer_name: state.customer.name,
+            street_address: state.customer.street,
+            city: state.customer.city,
+            zip: state.customer.zip,
+            total: 345.00, // would write some logic to loop through pizzas array and calculate total
+            type: state.customer.type,
+            pizzas: state.pizzas
+          }
+        Axios.post( '/api/order', objectToPost ).then( ( response )=>{
+            console.log( 'back from POST:', response.data );
+        }).catch( ( err )=>{
+            console.log( err );
+            alert( 'nope' );
+        }) // end axios call
     }
     return state;
 }
