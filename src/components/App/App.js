@@ -34,6 +34,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Prime Pizza</h1>
+          <p>{ JSON.stringify( this.props.reduxState ) }</p>
         </header>
         <br/>
         <img src="images/pizza_photo.png"/>
@@ -41,7 +42,7 @@ class App extends Component {
         <HashRouter>
           <Route exact path='/'render={ (props)=><Menu {...props} menu={ this.state.menu } dispatch={ this.props.dispatch }/> }/>
           <Route path='/customer' render={ (props)=><CustomerInfo {...props} dispatch={ this.props.dispatch } /> }/>
-          <Route path='/checkout' render={ (props)=><Checkout {...props} dispatch={ this.props.dispatch } /> } />
+          <Route path='/checkout' render={ (props)=><Checkout {...props} dispatch={ this.props.dispatch } reduxState={ this.props.reduxState }/> } />
         </HashRouter>
       </div>
     );
