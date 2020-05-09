@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import Menu from '../Menu/Menu';
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
+import Checkout from '../Checkout/Checkout';
 
 class App extends Component {
   render() {
@@ -12,6 +15,9 @@ class App extends Component {
         <br/>
         <img src="images/pizza_photo.png"/>
         <p>Pizza is great.</p>
+        <Menu />
+        <CustomerInfo />
+        <Checkout />
       </div>
     );
   }
