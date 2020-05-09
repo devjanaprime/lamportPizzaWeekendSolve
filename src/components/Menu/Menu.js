@@ -6,7 +6,7 @@ class Menu extends Component{
         return(
             <div>
                 <h1>Menu</h1>
-                { this.props.menu.map( (pizza)=><MenuItem key={ pizza.id } pizza={ pizza }/>) }
+                { this.props.menu.map( (pizza)=><MenuItem key={ pizza.id } pizza={ pizza } dispatch={ this.props.dispatch }/>) }
             </div>
         ) //end return
     } // end render

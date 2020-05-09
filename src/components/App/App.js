@@ -4,6 +4,7 @@ import './App.css';
 import Menu from '../Menu/Menu';
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
 import Checkout from '../Checkout/Checkout';
+import { connect } from 'react-redux';
 
 class App extends Component {
   state={
@@ -11,6 +12,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    console.log( this.props );
     this.getMenu();
   }
 
@@ -35,7 +37,7 @@ class App extends Component {
         <br/>
         <img src="images/pizza_photo.png"/>
         <p>Pizza is great.</p>
-        <Menu menu={ this.state.menu }/>
+        <Menu menu={ this.state.menu } dispatch={ this.props.dispatch }/>
         <CustomerInfo />
         <Checkout />
       </div>
@@ -43,4 +45,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const stateOnProps = ( reduxState ) => ( { reduxState } );
+
+export default connect(stateOnProps)(App);

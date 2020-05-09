@@ -5,19 +5,24 @@ class MenuItem extends Component{
         add: true
     }
 
+    componentDidMount(){
+        // console.log( this.props );
+    }
+
     handleClick=()=>{
         console.log( 'in handleClick' );
         const newAddValue = !this.state.add;
         if( newAddValue ){
             console.log( 'removing' );
+            this.props.dispatch( { type: 'remove', payload: this.props.pizza });
         }
         else{
             console.log( 'ordering' );
+            this.props.dispatch( { type: 'add', payload: this.props.pizza });
         }
         this.setState({
             add: newAddValue
         })
-
     }
 
     render(){
