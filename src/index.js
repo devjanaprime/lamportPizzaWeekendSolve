@@ -9,6 +9,15 @@ const reducerInitialState = {};
 
 const pizzaReducer = ( state=reducerInitialState, action ) =>{
     console.log( 'in pizzaReducer:', action );
+    if( action.type==='add' ){
+        console.log( 'adding pizza to order:',  action.payload );
+    }
+    else if( action.type==='remove' ){
+        console.log( 'removing pizza to order:',  action.payload );
+    }
+    else if( action.type==='customer411' ){
+        console.log( 'adding customer info:',  action.payload );
+    }
     return state;
 }
 

@@ -38,7 +38,7 @@ class App extends Component {
         <img src="images/pizza_photo.png"/>
         <p>Pizza is great.</p>
         <Menu menu={ this.state.menu } dispatch={ this.props.dispatch }/>
-        <CustomerInfo />
+        <CustomerInfo dispatch={ this.props.dispatch }/>
         <Checkout />
       </div>
     );
